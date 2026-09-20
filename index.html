@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عشقولک - Eshgholk</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Vazirmatn Font -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .dark .glass-card {
+            background: rgba(24, 24, 27, 0.85);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 text-zinc-800 dark:text-zinc-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Header / Nav -->
+    <header class="border-b border-rose-100 dark:border-zinc-800 glass-card sticky top-0 z-40">
+        <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-rose-400 flex items-center justify-center text-white shadow-lg shadow-rose-500/30">
+                    <i class="fa-solid font-bold fa-heart text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-none">عشقولک</h1>
+                    <span class="text-xs text-zinc-500 dark:text-zinc-400">Eshgholk</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <button id="themeToggle" class="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+                <button id="logoutBtn" class="hidden text-xs bg-rose-100 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 px-3 py-2 rounded-xl hover:bg-rose-200 transition">
+                    خروج
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6">
+        
+        <!-- Auth Section -->
+        <section id="authSection" class="max-w-md mx-auto my-8">
+            <div class="glass-card rounded-3xl p-6 md:p-8 shadow-2xl border border-white/50 dark:border-zinc-800">
+                
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 mx-auto mb-3 rounded-2xl bg-gradient-to-tr from-brand-600 to-rose-400 flex items-center justify-center text-white shadow-xl shadow-rose-500/30">
+                        <i class="fa-solid fa-heart text-3xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold">عشقولک</h2>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">اولین راه‌اندازی: حساب مشترک خود را بسازید</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex bg-zinc-100 dark:bg-zinc-800/60 p-1 rounded-2xl mb-6">
+                    <button id="tabRegister" class="flex-1 py-2 text-sm font-medium rounded-xl bg-white dark:bg-zinc-700 shadow-sm transition">ایجاد حساب</button>
+                    <button id="tabLogin" class="flex-1 py-2 text-sm font-medium rounded-xl text-zinc-500 dark:text-zinc-400 transition">ورود</button>
+                </div>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-500 mb-1">نام کاربری</label>
+                        <input type="text" id="regUser" required placeholder="نام کاربری" class="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-500 mb-1">رمز عبور</label>
+                        <input type="password" id="regPass" required placeholder="رمز عبور" class="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-600 to-rose-500 text-white font-medium shadow-lg shadow-rose-500/30 hover:opacity-95 transition">ایجاد حساب</button>
+                </form>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-4 hidden">
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-500 mb-1">نام کاربری</label>
+                        <input type="text" id="loginUser" required placeholder="نام کاربری" class="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-500 mb-1">رمز عبور</label>
+                        <input type="password" id="loginPass" required placeholder="رمز عبور" class="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-600 to-rose-500 text-white font-medium shadow-lg shadow-rose-500/30 hover:opacity-95 transition">ورود به حساب</button>
+                </form>
+
+            </div>
+        </section>
+
+        <!-- App Dashboard -->
+        <section id="appSection" class="hidden space-y-6">
+            
+            <!-- Create Memory Card -->
+            <div class="glass-card rounded-3xl p-6 shadow-xl border border-white/50 dark:border-zinc-800">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-plus-circle text-brand-500"></i> ثبت خاطره جدید
+                </h3>
+                <form id="memoryForm" class="space-y-4">
+                    <div>
+                        <input type="text" id="memTitle" placeholder="عنوان خاطره..." required class="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <div>
+                        <textarea id="memContent" rows="3" placeholder="توضیحات و احساسات این روز..." required class="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="date" id="memDate" required class="px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <input type="url" id="memImage" placeholder="لینک عکس (اختیاری)" class="px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium shadow-md transition">
+                        ذخیره خاطره
+                    </button>
+                </form>
+            </div>
+
+            <!-- Memories Feed -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-bookmark text-brand-500"></i> دفترچه خاطرات ما
+                </h3>
+                <div id="memoriesList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Cards will be injected here -->
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Tabs Toggle
+        const tabRegister = document.getElementById('tabRegister');
+        const tabLogin = document.getElementById('tabLogin');
+        const registerForm = document.getElementById('registerForm');
+        const loginForm = document.getElementById('loginForm');
+
+        tabRegister.addEventListener('click', () => {
+            tabRegister.className = "flex-1 py-2 text-sm font-medium rounded-xl bg-white dark:bg-zinc-700 shadow-sm transition";
+            tabLogin.className = "flex-1 py-2 text-sm font-medium rounded-xl text-zinc-500 dark:text-zinc-400 transition";
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+
+        tabLogin.addEventListener('click', () => {
+            tabLogin.className = "flex-1 py-2 text-sm font-medium rounded-xl bg-white dark:bg-zinc-700 shadow-sm transition";
+            tabRegister.className = "flex-1 py-2 text-sm font-medium rounded-xl text-zinc-500 dark:text-zinc-400 transition";
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        });
+
+        // Auth & App Logic
+        const authSection = document.getElementById('authSection');
+        const appSection = document.getElementById('appSection');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        function checkAuth() {
+            const user = localStorage.getItem('eshgholk_user');
+            if (user) {
+                authSection.classList.add('hidden');
+                appSection.classList.remove('hidden');
+                logoutBtn.classList.remove('hidden');
+                renderMemories();
+            } else {
+                authSection.classList.remove('hidden');
+                appSection.classList.add('hidden');
+                logoutBtn.classList.add('hidden');
+            }
+        }
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = document.getElementById('regUser').value;
+            localStorage.setItem('eshgholk_user', user);
+            checkAuth();
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = document.getElementById('loginUser').value;
+            localStorage.setItem('eshgholk_user', user);
+            checkAuth();
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('eshgholk_user');
+            checkAuth();
+        });
+
+        // Memories Management
+        const memoryForm = document.getElementById('memoryForm');
+        const memoriesList = document.getElementById('memoriesList');
+
+        function getMemories() {
+            return JSON.parse(localStorage.getItem('eshgholk_memories') || '[]');
+        }
+
+        function saveMemories(memories) {
+            localStorage.setItem('eshgholk_memories', JSON.stringify(memories));
+        }
+
+        memoryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('memTitle').value;
+            const content = document.getElementById('memContent').value;
+            const date = document.getElementById('memDate').value;
+            const image = document.getElementById('memImage').value;
+
+            const memories = getMemories();
+            memories.unshift({ id: Date.now(), title, content, date, image });
+            saveMemories(memories);
+
+            memoryForm.reset();
+            renderMemories();
+        });
+
+        function deleteMemory(id) {
+            let memories = getMemories();
+            memories = memories.filter(m => m.id !== id);
+            saveMemories(memories);
+            renderMemories();
+        }
+
+        function renderMemories() {
+            const memories = getMemories();
+            if (memories.length === 0) {
+                memoriesList.innerHTML = `<div class="col-span-full text-center py-10 text-zinc-400">هنوز هیچ خاطره‌ای ثبت نشده است. اولین خاطره را ثبت کنید!</div>`;
+                return;
+            }
+
+            memoriesList.innerHTML = memories.map(m => `
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/40 dark:border-zinc-800 shadow-md flex flex-col justify-between">
+                    <div>
+                        ${m.image ? `<img src="${m.image}" alt="${m.title}" class="w-full h-48 object-cover">` : ''}
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">${m.title}</h4>
+                                <span class="text-xs px-2 py-1 bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-300 rounded-lg">${m.date}</span>
+                            </div>
+                            <p class="text-sm text-zinc-600 dark:text-zinc-300 whitespace-pre-line">${m.content}</p>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0 text-left">
+                        <button onclick="deleteMemory(${m.id})" class="text-xs text-rose-500 hover:text-rose-700 transition">
+                            <i class="fa-solid fa-trash"></i> حذف
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize App
+        document.getElementById('memDate').valueAsDate = new Date();
+        checkAuth();
+    </script>
+</body>
+</html>
